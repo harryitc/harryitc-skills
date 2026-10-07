@@ -43,3 +43,7 @@ base branch, test commands per path, extra PR sections or checklist lines for a 
 ## Requirements
 
 `git` and the [GitHub CLI](https://cli.github.com/) (`gh auth login`).
+
+## License
+
+[MIT](LICENSE)

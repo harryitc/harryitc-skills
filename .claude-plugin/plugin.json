@@ -3,8 +3,17 @@
   "displayName": "harryitc skills",
   "version": "0.1.0",
   "description": "Agent skills by harryitc: github-pull-request (pre-push checks, a PR body containing only the sections the diff triggers, approval before any push).",
-  "author": { "name": "harryitc", "url": "https://github.com/harryitc" },
+  "author": {
+    "name": "harryitc",
+    "url": "https://github.com/harryitc"
+  },
   "homepage": "https://github.com/harryitc/harryitc-skills",
   "repository": "https://github.com/harryitc/harryitc-skills",
-  "keywords": ["skills", "pull-request", "github", "git"]
+  "keywords": [
+    "skills",
+    "pull-request",
+    "github",
+    "git"
+  ],
+  "license": "MIT"
 }
