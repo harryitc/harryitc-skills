@@ -1,0 +1,15 @@
+{
+  "name": "harryitc-skills",
+  "description": "Agent skills by harryitc (github-pull-request and more).",
+  "owner": {
+    "name": "harryitc",
+    "url": "https://github.com/harryitc"
+  },
+  "plugins": [
+    {
+      "name": "harryitc-skills",
+      "source": "./",
+      "description": "Agent skills by harryitc: github-pull-request and more."
+    }
+  ]
+}
