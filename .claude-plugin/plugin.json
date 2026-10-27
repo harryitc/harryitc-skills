@@ -1,8 +1,8 @@
 {
   "name": "harryitc-skills",
   "displayName": "harryitc skills",
-  "version": "0.1.0",
-  "description": "Agent skills by harryitc: github-pull-request (pre-push checks, a PR body containing only the sections the diff triggers, approval before any push).",
+  "version": "0.2.0",
+  "description": "Agent skills by harryitc: github-pull-request (pre-push checks, targeted PR body), qa-blackbox-testing (ISTQB black-box test design, coverage matrix, and test case quality review).",
   "author": {
     "name": "harryitc",
     "url": "https://github.com/harryitc"
@@ -13,7 +13,12 @@
     "skills",
     "pull-request",
     "github",
-    "git"
+    "git",
+    "qa",
+    "testing",
+    "blackbox",
+    "testcase",
+    "istqb"
   ],
   "license": "MIT"
 }

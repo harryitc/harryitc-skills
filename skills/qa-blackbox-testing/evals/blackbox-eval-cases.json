@@ -1,0 +1,126 @@
+{
+  "version": "0.1.0",
+  "language": "vi",
+  "purpose": "Evaluate Black-box Test Case Generation and Review quality; cases are illustrative and not project business rules.",
+  "cases": [
+    {
+      "id": "BB-EVAL-001",
+      "title": "Boundary validation with explicit inclusive range",
+      "input": "Requirement mẫu: quantity phải là số nguyên từ 1 đến 10, bao gồm 1 và 10. Hãy đề xuất coverage và Test Case.",
+      "expected_coverage_checkpoints": [
+        "0 bị từ chối",
+        "1 được chấp nhận",
+        "10 được chấp nhận",
+        "11 bị từ chối",
+        "non-integer được xét",
+        "Expected Result truy vết về rule quantity từ 1 đến 10"
+      ],
+      "forbidden_assumptions": [
+        "Không tự khẳng định message UI cụ thể",
+        "Không thêm điều kiện required nếu chưa có trong input"
+      ],
+      "acceptance_criteria": [
+        "Dữ liệu boundary là chính xác",
+        "Nêu technique phù hợp",
+        "Không yêu cầu mọi case phải có mọi trường hợp không liên quan"
+      ]
+    },
+    {
+      "id": "BB-EVAL-002",
+      "title": "Ambiguous search behavior",
+      "input": "Requirement: Người dùng có thể tìm kiếm theo từ khóa. Không có mô tả thêm về case sensitivity, trường tìm kiếm, partial match hoặc hành vi khi không có kết quả. Hãy tạo Test Case.",
+      "expected_coverage_checkpoints": [
+        "Tạo case cho hành vi được mô tả rõ nếu có thể",
+        "Nêu các điểm chưa rõ: phạm vi field, partial/exact match, case sensitivity, empty/no-result behavior nếu cần"
+      ],
+      "forbidden_assumptions": [
+        "Không khẳng định tìm kiếm không phân biệt hoa thường",
+        "Không khẳng định tìm trên tất cả field",
+        "Không tự đặt empty-state message"
+      ],
+      "acceptance_criteria": [
+        "Expected Result không vượt khỏi nguồn",
+        "Có câu hỏi/ambiguity rõ",
+        "Không chặn toàn bộ công việc nếu vẫn tạo được phần có căn cứ"
+      ]
+    },
+    {
+      "id": "BB-EVAL-003",
+      "title": "Role permission rule",
+      "input": "Role matrix đã xác nhận: Role Viewer được xem báo cáo; không được export. Khi export bị từ chối, tài liệu chưa xác định message cụ thể. Hãy tạo Test Case cho export permission.",
+      "expected_coverage_checkpoints": [
+        "Viewer thực hiện export bị từ chối",
+        "Kết quả dữ liệu không bị export thành công",
+        "Traceability về role matrix"
+      ],
+      "forbidden_assumptions": [
+        "Không tự khẳng định HTTP 403",
+        "Không tự đặt exact UI message",
+        "Không mặc định hành vi tải file hoặc toast ngoài nội dung đã cho"
+      ],
+      "acceptance_criteria": [
+        "Role và action cụ thể",
+        "Expected Result tập trung vào behavior đã xác nhận",
+        "Ghi message handling là cần làm rõ nếu phải kiểm thử cụ thể"
+      ]
+    },
+    {
+      "id": "BB-EVAL-004",
+      "title": "State transition",
+      "input": "Workflow được phê duyệt: Draft có thể Submit và chuyển sang Submitted. Không cho phép Approve khi đang ở Draft. Tài liệu không quy định message khi thao tác sai. Hãy thiết kế Test Case.",
+      "expected_coverage_checkpoints": [
+        "Draft + Submit → Submitted",
+        "Draft + Approve bị ngăn/từ chối theo rule",
+        "Nêu setup/current state",
+        "Traceability về workflow"
+      ],
+      "forbidden_assumptions": [
+        "Không đặt exact rejection message",
+        "Không tự tạo thêm trạng thái như Rejected/Archived"
+      ],
+      "acceptance_criteria": [
+        "Tách transition hợp lệ và không hợp lệ",
+        "Phân biệt outcome nghiệp vụ với nội dung message chưa xác định"
+      ]
+    },
+    {
+      "id": "BB-EVAL-005",
+      "title": "Review duplicate and vague expected result",
+      "input": "Review hai case: TC-01: nhập quantity=0, click Save, expected='hệ thống xử lý đúng'; TC-02: nhập quantity=0, click Save, expected='hệ thống xử lý đúng'. Requirement nói quantity >= 1.",
+      "expected_coverage_checkpoints": [
+        "Phát hiện expected result mơ hồ",
+        "Phát hiện candidate duplicate",
+        "Đề xuất expected result có căn cứ: không chấp nhận quantity 0/không tạo dữ liệu hợp lệ; không tự đặt message",
+        "Giữ lại requirement reference"
+      ],
+      "forbidden_assumptions": [
+        "Không tự tạo validation message cụ thể",
+        "Không kết luận state dữ liệu sau lỗi nếu requirement chưa xác nhận rõ ngoài điều không chấp nhận quantity"
+      ],
+      "acceptance_criteria": [
+        "Review có evidence và recommendation",
+        "Không dùng Approved làm kết luận của AI"
+      ]
+    },
+    {
+      "id": "BB-EVAL-006",
+      "title": "Decision table combination",
+      "input": "Rule mẫu: Chỉ cho phép submit khi accountActive=true, prerequisiteMet=true và capacityAvailable=true. Nếu bất kỳ điều kiện nào false thì không cho phép submit. Hãy lập coverage matrix và Test Case tối thiểu hợp lý.",
+      "expected_coverage_checkpoints": [
+        "Tất cả đúng → cho phép",
+        "Mỗi điều kiện false được phân biệt để kiểm tra rule",
+        "Xem tổ hợp nhiều điều kiện false nếu có value để xác minh thứ tự/thông báo, nhưng không bắt buộc nếu output giống nhau và không có rule riêng",
+        "Decision Table được dùng/giải thích phù hợp"
+      ],
+      "forbidden_assumptions": [
+        "Không tự gán message khác nhau cho từng lý do",
+        "Không tạo bypass/override condition"
+      ],
+      "acceptance_criteria": [
+        "Condition và output có căn cứ",
+        "Không bùng nổ case không cần thiết",
+        "Nêu điểm còn thiếu nếu cần test cách thông báo từng nguyên nhân"
+      ]
+    }
+  ]
+}
